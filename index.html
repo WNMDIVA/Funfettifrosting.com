@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="An original character archive and personal site.">
+  <title>OC Archive</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="logo" href="#main">✦ OC ARCHIVE</a>
+
+    <nav class="nav" aria-label="Main navigation">
+      <a href="#main">Main</a>
+      <a href="#ocs">OCs</a>
+      <a href="#about">About Me</a>
+    </nav>
+  </header>
+
+  <main>
+    <section id="main" class="hero">
+      <div class="hero-content">
+        <p class="eyebrow">WELCOME TO MY WORLD</p>
+        <h1>Characters, stories,<br><span>and strange little worlds.</span></h1>
+        <p class="hero-text">
+          A personal archive for my original characters, their stories,
+          relationships, lore, and everything else that makes their worlds tick.
+        </p>
+        <a class="button" href="#ocs">Explore the OCs ↓</a>
+      </div>
+
+      <div class="hero-card">
+        <div class="orb"></div>
+        <p>THE ARCHIVE</p>
+        <h2>Original<br>Characters</h2>
+        <span>EST. 2026</span>
+      </div>
+    </section>
+
+    <section id="ocs" class="section">
+      <div class="section-heading">
+        <p class="eyebrow">CHARACTER ARCHIVE</p>
+        <h2>My OCs</h2>
+        <p>Click a character card to reveal their profile.</p>
+      </div>
+
+      <div class="oc-grid">
+        <!-- Duplicate this card to add more characters. -->
+        <article class="oc-card">
+          <div class="oc-image placeholder">CHARACTER 01</div>
+          <div class="oc-info">
+            <span class="tag">PROTAGONIST</span>
+            <h3>Character Name</h3>
+            <p>A short introduction to this character goes here.</p>
+            <button class="profile-button" type="button"
+              onclick="openProfile('Character Name', 'Protagonist', 'A longer description of your character goes here. Add personality, lore, abilities, relationships, or anything else you want.')">
+              View Profile
+            </button>
+          </div>
+        </article>
+
+        <article class="oc-card">
+          <div class="oc-image placeholder">CHARACTER 02</div>
+          <div class="oc-info">
+            <span class="tag">ANTAGONIST</span>
+            <h3>Character Name</h3>
+            <p>A short introduction to this character goes here.</p>
+            <button class="profile-button" type="button"
+              onclick="openProfile('Character Name', 'Antagonist', 'Replace this text with the character profile, lore, motivations, and other details.')">
+              View Profile
+            </button>
+          </div>
+        </article>
+
+        <article class="oc-card">
+          <div class="oc-image placeholder">CHARACTER 03</div>
+          <div class="oc-info">
+            <span class="tag">MYSTERY</span>
+            <h3>Character Name</h3>
+            <p>A short introduction to this character goes here.</p>
+            <button class="profile-button" type="button"
+              onclick="openProfile('Character Name', 'Mystery', 'Replace this text with your character profile and worldbuilding.')">
+              View Profile
+            </button>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="about" class="about section">
+      <div class="section-heading">
+        <p class="eyebrow">THE PERSON BEHIND THE CHARACTERS</p>
+        <h2>About Me</h2>
+      </div>
+
+      <div class="about-box">
+        <div>
+          <h3>Hi, I'm Wiz.</h3>
+          <p>
+            Welcome to my little corner of the internet. This site is where I
+            keep my original characters, stories, art, and worldbuilding.
+          </p>
+          <p>
+            Add whatever you want here: your interests, links, social accounts,
+            creative projects, or a little introduction about yourself.
+          </p>
+        </div>
+
+        <div class="facts">
+          <div><span>01</span> OC Creator</div>
+          <div><span>02</span> Worldbuilder</div>
+          <div><span>03</span> Professional Silly Person</div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2026 Wiz · Made for original characters & stories.</p>
+  </footer>
+
+  <div id="profile-modal" class="modal" aria-hidden="true">
+    <div class="modal-backdrop" onclick="closeProfile()"></div>
+    <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="modal-name">
+      <button class="close" type="button" onclick="closeProfile()" aria-label="Close">×</button>
+      <span id="modal-role" class="tag"></span>
+      <h2 id="modal-name"></h2>
+      <p id="modal-description"></p>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
