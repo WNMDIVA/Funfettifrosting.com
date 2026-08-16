@@ -46,8 +46,8 @@ document.addEventListener("DOMContentLoaded", () => {
   document.querySelectorAll(".expand-toggle").forEach((button) => {
     button.addEventListener("click", (event) => {
       event.stopPropagation();
-      const text = button.previousElementSibling;
-      const isExpanded = text.classList.toggle("expanded");
+      const wrapper = button.previousElementSibling;
+      const isExpanded = wrapper.classList.toggle("expanded");
       button.setAttribute("aria-expanded", String(isExpanded));
       button.textContent = isExpanded ? "show less" : "...";
     });
