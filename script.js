@@ -43,6 +43,16 @@ document.addEventListener("DOMContentLoaded", () => {
   // 3. TAROT CARD FLIP
   // =========================================================
 
+  document.querySelectorAll(".expand-toggle").forEach((button) => {
+    button.addEventListener("click", (event) => {
+      event.stopPropagation();
+      const text = button.previousElementSibling;
+      const isExpanded = text.classList.toggle("expanded");
+      button.setAttribute("aria-expanded", String(isExpanded));
+      button.textContent = isExpanded ? "show less" : "...";
+    });
+  });
+
   const cards = document.querySelectorAll(".oc-card");
 
   cards.forEach(card => {
@@ -125,5 +135,26 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
   }
+
+  document.addEventListener("pointerdown", (event) => {
+    const burst = document.createElement("span");
+    burst.className = "starburst";
+
+    const x = event.clientX;
+    const y = event.clientY;
+    const dx = (Math.random() * 80 - 40) + "px";
+    const dy = (Math.random() * 80 - 40) + "px";
+
+    burst.style.left = x + "px";
+    burst.style.top = y + "px";
+    burst.style.setProperty("--dx", dx);
+    burst.style.setProperty("--dy", dy);
+
+    document.body.appendChild(burst);
+
+    setTimeout(() => {
+      burst.remove();
+    }, 700);
+  });
 
 });

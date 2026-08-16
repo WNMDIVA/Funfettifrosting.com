@@ -17,6 +17,38 @@ body {
   font-family: Georgia, "Times New Roman", serif;
   line-height: 1.6;
   overflow-x: hidden;
+  position: relative;
+}
+
+.starburst {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 12px;
+  height: 12px;
+  pointer-events: none;
+  z-index: 1500;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255,255,255,0.95) 0%, rgba(196,169,255,0.9) 30%, rgba(152,115,216,0.2) 70%, transparent 100%);
+  box-shadow:
+    0 0 8px rgba(255,255,255,0.9),
+    0 0 18px rgba(175, 138, 255, 0.8),
+    0 0 28px rgba(152, 115, 216, 0.45);
+  animation: starBurst 700ms ease-out forwards;
+}
+
+@keyframes starBurst {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.2);
+  }
+  15% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translate(var(--dx), var(--dy)) scale(1.8);
+  }
 }
 
 .archive-entry {
@@ -26,7 +58,7 @@ body {
   display: grid;
   place-items: center;
   background: radial-gradient(circle at center, rgba(80, 52, 98, 0.85), rgba(8, 7, 12, 0.98));
-  transition: opacity 0.45s ease, visibility 0.45s ease;
+  transition: opacity 0.8s ease, visibility 0.8s ease;
 }
 
 .archive-entry.hidden {
@@ -489,6 +521,39 @@ body {
   margin: 0;
   color: #aaa1b0;
   font-size: 0.88rem;
+}
+
+.expandable-text-wrap {
+  display: grid;
+  gap: 8px;
+}
+
+.expandable-text {
+  margin: 0;
+  max-height: 4.8em;
+  overflow: hidden;
+  color: #aaa1b0;
+  font-size: 0.88rem;
+  line-height: 1.6;
+  transition: max-height 0.35s ease;
+}
+
+.expandable-text.expanded {
+  max-height: 18em;
+  overflow: visible;
+}
+
+.expand-toggle {
+  border: none;
+  background: transparent;
+  padding: 0;
+  color: #c9b7d8;
+  font: inherit;
+  font-size: 0.76rem;
+  letter-spacing: 0.12em;
+  text-transform: lowercase;
+  text-align: left;
+  cursor: pointer;
 }
 
 .Janus-back-text,
