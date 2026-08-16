@@ -46,7 +46,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const cards = document.querySelectorAll(".oc-card");
 
   cards.forEach(card => {
-    card.addEventListener("click", () => {
+    card.addEventListener("click", (e) => {
+      e.stopPropagation();
       card.classList.toggle("flipped");
     });
 
@@ -58,59 +59,10 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-});
+  // =========================================================
+  // 4. BACKGROUND MUSIC CONTROLS
+  // =========================================================
 
-// =========================================================
-// 1. GLOBAL SMOOTH SCROLL FUNCTION (NO HASH IN URL)
-// =========================================================
-
-function scrollToId(id) {
-  const target = document.getElementById(id);
-  if (target) {
-    target.scrollIntoView({ behavior: 'smooth' });
-  }
-}
-
-// =========================================================
-// 2. PREVENT AUTO-SCROLL ON REFRESH
-// =========================================================
-
-if ('scrollRestoration' in history) {
-  history.scrollRestoration = 'manual';
-}
-
-if (window.location.hash) {
-  history.replaceState(null, '', window.location.pathname);
-}
-
-window.addEventListener('beforeunload', () => {
-  window.scrollTo(0, 0);
-});
-
-// =========================================================
-// 3. TAROT CARD FLIP & MUSIC CONTROLS (RUNS ON LOAD)
-// =========================================================
-
-document.addEventListener("DOMContentLoaded", () => {
-
-  // --- TAROT CARDS ---
-  const cards = document.querySelectorAll(".oc-card");
-
-  cards.forEach(card => {
-    card.addEventListener("click", () => {
-      card.classList.toggle("flipped");
-    });
-
-    card.addEventListener("keydown", (e) => {
-      if (e.key === "Enter" || e.key === " ") {
-        e.preventDefault();
-        card.classList.toggle("flipped");
-      }
-    });
-  });
-
-
-  // --- BACKGROUND MUSIC ---
   const music = document.getElementById("bg-music");
   const musicBtn = document.getElementById("music-btn");
   const musicIcon = document.getElementById("music-icon");
