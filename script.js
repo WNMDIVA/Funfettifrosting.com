@@ -6,7 +6,11 @@ if ('scrollRestoration' in history) {
   history.scrollRestoration = 'manual';
 }
 
-if (window.location.hash) {
+// Remember where we were asked to land (e.g. arriving from a character page
+// via index.html#ocs) BEFORE stripping the hash, so we can still scroll there.
+const incomingHash = window.location.hash;
+
+if (incomingHash) {
   history.replaceState(null, '', window.location.pathname);
 }
 
@@ -43,44 +47,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // 3. TAROT CARD FLIP
   // =========================================================
 
-  const cardData = [
-    {
-      cssClass: "Janus",
-      name: "Janus Picca",
-      frontTag: "THE MAGICIAN",
-      frontTitle: "JANUS PICA",
-      frontText: "His parents didn't call him Heinous Janus for no reason! Janus is one rambunctiously playful man, prone to playing silly pranks and sneaking around. But don't be fooled, he isn't simple-minded. In fact, he's rather intelligent behind his lively facade. He knows how to use his charisma, and isn't shy about it. He always wants to know… everything. And his eyepatch? What could he be hiding? He really is a mystery of a man. A shame he turned out so callous.",
-      backTag: "THE MAGICIAN REVERSED",
-      backTitle: "THE BLEEDING BROKER",
-      backText: ["replace", "replace"],
-      frontImage: "images/Janus-front.png",
-      backImage: "images/Janus-back.png"
-    },
-    {
-      cssClass: "Hezekial",
-      name: "Hezekial Adams",
-      frontTag: "THE HIEROPHANT",
-      frontTitle: "HEZEKIAL ADAMS",
-      frontText: "Self-imposed structure and tireless amounts of studying defined the Adams family's sole heir. He despised laziness and detested obstreperous people, focused solely on achieving his unattainable standard of perfection. With his brilliant mind made for engineering and tinkering, he might've succeeded the best of the best. Still, despite his seemingly prejudiced exterior, he wouldn't hesitate to help anyone in their time of need—it's a shame that sympathy didn't last.",
-      backTag: "THE HIEROPHANT REVERSED",
-      backTitle: "THE PROPHETIC JUDGE",
-      backText: ["Replace this text", "Replace"],
-      frontImage: "images/Hezekial-front.png",
-      backImage: "images/Hezekial-back.png"
-    },
-    {
-      cssClass: "Juliet",
-      name: "Juliet Dreymos",
-      frontTag: "THE EMPRESS",
-      frontTitle: "JULIET DREYMOS",
-      frontText: "This doe halfling is as sweet as a dried jujube! Standing at only 135 cm tall at her full height, she's as intimidating as a fluffy lapdog. A childhood being a frequent victim of teasing has made Juliet a bit skittish and timid, so she is quick to get dependant on those she lets into her tender heart. A daddy's girl through and through, she relishes in the privileges of Lord Dreymos's coddling. Destined to power through favouritism, it's safe to assume she'd make a kind marchioness. It's a shame her vulnerability consumed her.",
-      backTag: "THE EMPRESS REVERSED",
-      backTitle: "EKLEKTOS PRINKIPESSA",
-      backText: ["Replace", "Perhaps the archive knows more than it is willing to reveal."],
-      frontImage: "images/Juliet-front.png",
-      backImage: "images/Juliet-back.png"
-    }
-  ];
+  const cardData = window.CHARACTERS || [];
 
   const grid = document.getElementById("oc-grid");
 
@@ -89,30 +56,26 @@ document.addEventListener("DOMContentLoaded", () => {
       <article class="oc-card" tabindex="0" role="button" aria-label="Card for ${card.name}">
         <div class="oc-card-inner">
           <div class="oc-card-front">
-            <div class="${card.cssClass}-image">
+            <div class="oc-image ${card.cssClass}-image">
               <img src="${card.frontImage}" alt="${card.name}">
             </div>
-            <div class="${card.cssClass}-info">
+            <div class="oc-info">
               <span class="tag">${card.frontTag}</span>
               <h3>${card.frontTitle}</h3>
-              <div class="expandable-text-wrap">
-                <p class="expandable-text collapsed">${card.frontText}</p>
-              </div>
+              <p class="oc-blurb">${card.frontText}</p>
+              <a class="button oc-open" href="${card.id}.html">OPEN FILE →</a>
             </div>
           </div>
 
-          <div class="oc-card-back">
-            <div class="${card.cssClass}-image">
+          <div class="oc-card-back" inert>
+            <div class="oc-image ${card.cssClass}-image">
               <img src="${card.backImage}" alt="${card.name} alternate artwork">
             </div>
-            <div class="${card.cssClass}-back-text">
+            <div class="oc-info oc-info-back">
               <span class="tag">${card.backTag}</span>
               <h3>${card.backTitle}</h3>
-              ${card.backText.map((line) => `
-                <div class="expandable-text-wrap">
-                  <p class="expandable-text collapsed">${line}</p>
-                </div>
-              `).join("")}
+              <p class="oc-blurb">${card.backText.join(" ")}</p>
+              <a class="button oc-open" href="${card.id}.html">OPEN FILE →</a>
             </div>
           </div>
         </div>
@@ -123,41 +86,71 @@ document.addEventListener("DOMContentLoaded", () => {
   const cards = document.querySelectorAll(".oc-card");
 
   cards.forEach(card => {
-    let touchStartY = 0;
-    let touchStartX = 0;
+    let downX = 0;
+    let downY = 0;
 
-    card.addEventListener("touchstart", (e) => {
-      const touch = e.touches[0];
-      touchStartY = touch.clientY;
-      touchStartX = touch.clientX;
-    }, { passive: true });
+    const faceFront = card.querySelector(".oc-card-front");
+    const faceBack = card.querySelector(".oc-card-back");
 
-    card.addEventListener("touchend", (e) => {
-      const touch = e.changedTouches[0];
-      const deltaY = Math.abs(touch.clientY - touchStartY);
-      const deltaX = Math.abs(touch.clientX - touchStartX);
+    // backface-visibility hides the away-facing side but leaves its
+    // "open file" link in the tab order — keep it out of reach.
+    function toggleFlip() {
+      const flipped = card.classList.toggle("flipped");
 
-      if (deltaY < 10 && deltaX < 10) {
-        card.classList.toggle("flipped");
-      }
-    }, { passive: true });
+      (flipped ? faceFront : faceBack).setAttribute("inert", "");
+      (flipped ? faceBack : faceFront).removeAttribute("inert");
+    }
 
+    // Record where the press started so a swipe-to-scroll isn't read as a tap.
+    card.addEventListener("pointerdown", (e) => {
+      downX = e.clientX;
+      downY = e.clientY;
+    });
+
+    // One handler for mouse AND touch: tapping anywhere on the card flips it,
+    // except the "open file" link, which is allowed to navigate.
     card.addEventListener("click", (e) => {
-      if (e.target.closest(".Janus-info, .Hezekial-info, .Juliet-info, .Janus-back-text, .Hezekial-back-text, .Juliet-back-text")) {
+      if (e.target.closest(".oc-open")) {
         return;
       }
 
-      e.stopPropagation();
-      card.classList.toggle("flipped");
+      if (Math.abs(e.clientX - downX) > 10 || Math.abs(e.clientY - downY) > 10) {
+        return;
+      }
+
+      toggleFlip();
     });
 
     card.addEventListener("keydown", (e) => {
       if (e.key === "Enter" || e.key === " ") {
         e.preventDefault();
-        card.classList.toggle("flipped");
+        toggleFlip();
       }
     });
   });
+
+  // Land on the section we arrived for (e.g. index.html#ocs from a character page).
+  // This has to jump, not glide: `scroll-behavior: smooth` on <html> would
+  // otherwise animate it, and the animation gets cancelled as the card artwork
+  // loads and shifts the layout underneath it.
+  function landOnIncomingSection() {
+    if (!incomingHash) return;
+
+    const landing = document.getElementById(incomingHash.slice(1));
+    if (!landing) return;
+
+    const root = document.documentElement;
+    const previous = root.style.scrollBehavior;
+
+    root.style.scrollBehavior = "auto";
+    landing.scrollIntoView({ block: "start" });
+    root.style.scrollBehavior = previous;
+  }
+
+  landOnIncomingSection();
+
+  // Run again once the images have their real sizes.
+  window.addEventListener("load", landOnIncomingSection);
 
   // =========================================================
   // 4. BACKGROUND MUSIC CONTROLS
@@ -202,6 +195,23 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  // sessionStorage may throw in private-browsing / blocked-storage modes.
+  function remember(key, value) {
+    try {
+      sessionStorage.setItem(key, value);
+    } catch (err) {
+      // Not important enough to break the page over.
+    }
+  }
+
+  function recall(key) {
+    try {
+      return sessionStorage.getItem(key);
+    } catch (err) {
+      return null;
+    }
+  }
+
   if (music && musicBtn) {
     music.volume = 0.35;
 
@@ -217,17 +227,18 @@ document.addEventListener("DOMContentLoaded", () => {
         musicStatus.textContent = "MUSIC: OFF";
         musicBtn.classList.remove("playing");
       }
+
+      isPlaying = playing;
+      remember("musicOn", playing ? "1" : "0");
     }
 
     function toggleMusic() {
       if (isPlaying) {
         music.pause();
         setMusicState(false);
-        isPlaying = false;
       } else {
         music.play().then(() => {
           setMusicState(true);
-          isPlaying = true;
         }).catch(err => {
           console.log("Audio play blocked by browser:", err);
         });
@@ -238,24 +249,75 @@ document.addEventListener("DOMContentLoaded", () => {
       e.stopPropagation();
       toggleMusic();
     });
+
+    // Carry the music across page navigations. Browsers will often refuse to
+    // autoplay without a fresh user gesture — if so the button just reads OFF
+    // and one tap resumes it.
+    if (recall("musicOn") === "1") {
+      music.play().then(() => {
+        setMusicState(true);
+      }).catch(() => {
+        setMusicState(false);
+      });
+    }
+
+    // Pause the background track while a one-off clip (a voice claim) plays,
+    // then bring it back if it was on. Used by character.js.
+    window.ArchiveAudio = {
+      duckFor(clip) {
+        if (!clip) return;
+
+        const wasPlaying = isPlaying;
+
+        if (wasPlaying) {
+          music.pause();
+          musicBtn.classList.remove("playing");
+        }
+
+        const restore = () => {
+          clip.removeEventListener("ended", restore);
+          clip.removeEventListener("pause", restore);
+
+          if (wasPlaying) {
+            music.play().then(() => {
+              musicBtn.classList.add("playing");
+            }).catch(() => {
+              setMusicState(false);
+            });
+          }
+        };
+
+        clip.addEventListener("ended", restore);
+        clip.addEventListener("pause", restore);
+      }
+    };
   }
 
-  if (archiveEntry && enterArchiveBtn) {
-    enterArchiveBtn.addEventListener("click", () => {
-      archiveEntry.classList.add("hidden");
+  if (archiveEntry) {
+    // Coming back from a character page shouldn't make you knock twice.
+    if (recall("archiveEntered") === "1") {
+      archiveEntry.classList.add("no-transition", "hidden");
+    }
 
-      if (music) {
-        music.play().then(() => {
-          if (musicIcon && musicStatus && musicBtn) {
-            musicIcon.textContent = "🔊";
-            musicStatus.textContent = "MUSIC: ON";
-            musicBtn.classList.add("playing");
-          }
-        }).catch(err => {
-          console.log("Entry music play blocked by browser:", err);
-        });
-      }
-    });
+    if (enterArchiveBtn) {
+      enterArchiveBtn.addEventListener("click", () => {
+        archiveEntry.classList.add("hidden");
+        remember("archiveEntered", "1");
+
+        if (music) {
+          music.play().then(() => {
+            if (musicIcon && musicStatus && musicBtn) {
+              musicIcon.textContent = "🔊";
+              musicStatus.textContent = "MUSIC: ON";
+              musicBtn.classList.add("playing");
+              remember("musicOn", "1");
+            }
+          }).catch(err => {
+            console.log("Entry music play blocked by browser:", err);
+          });
+        }
+      });
+    }
   }
 
   document.addEventListener("pointerdown", (event) => {
