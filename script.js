@@ -59,3 +59,60 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
 });
+
+// =========================================================
+// BACKGROUND MUSIC CONTROLLER
+// =========================================================
+
+const music = document.getElementById("bg-music");
+const musicBtn = document.getElementById("music-btn");
+const musicIcon = document.getElementById("music-icon");
+const musicStatus = document.getElementById("music-status");
+
+if (music && musicBtn) {
+  // Set default volume (0.35 = 35% so it's not too loud)
+  music.volume = 0.35;
+
+  let isPlaying = false;
+
+  function toggleMusic() {
+    if (isPlaying) {
+      music.pause();
+      musicIcon.textContent = "🔇";
+      musicStatus.textContent = "MUSIC: OFF";
+      musicBtn.classList.remove("playing");
+      isPlaying = false;
+    } else {
+      music.play().then(() => {
+        musicIcon.textContent = "🔊";
+        musicStatus.textContent = "MUSIC: ON";
+        musicBtn.classList.add("playing");
+        isPlaying = true;
+      }).catch(err => {
+        console.log("Audio play blocked by browser:", err);
+      });
+    }
+  }
+
+  // Toggle on button click
+  musicBtn.addEventListener("click", (e) => {
+    e.stopPropagation(); // Prevents flipping cards or other triggers
+    toggleMusic();
+  });
+
+  // OPTIONAL: Start music automatically on the user's very first click anywhere
+  function startOnFirstInteraction() {
+    if (!isPlaying) {
+      music.play().then(() => {
+        musicIcon.textContent = "🔊";
+        musicStatus.textContent = "MUSIC: ON";
+        musicBtn.classList.add("playing");
+        isPlaying = true;
+      }).catch(() => {});
+    }
+    // Remove listener after first interaction
+    document.removeEventListener("click", startOnFirstInteraction);
+  }
+
+  document.addEventListener("click", startOnFirstInteraction);
+}
