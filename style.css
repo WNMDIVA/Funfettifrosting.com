@@ -539,6 +539,9 @@ body {
   flex: 1;
   padding: 18px 24px;
   overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  scrollbar-color: #4b4353 transparent;
 }
 
 .Janus-info,
@@ -554,7 +557,7 @@ body {
 .Janus-back-text::-webkit-scrollbar,
 .Hezekial-back-text::-webkit-scrollbar,
 .Juliet-back-text::-webkit-scrollbar {
-  width: 5px;
+  width: 6px;
 }
 
 .Janus-info::-webkit-scrollbar-thumb,
@@ -563,8 +566,8 @@ body {
 .Janus-back-text::-webkit-scrollbar-thumb,
 .Hezekial-back-text::-webkit-scrollbar-thumb,
 .Juliet-back-text::-webkit-scrollbar-thumb {
-  background: #4b4353;
-  border-radius: 10px;
+  background: rgba(175, 138, 255, 0.7);
+  border-radius: 999px;
 }
 
 .Janus-info h3,
@@ -596,37 +599,6 @@ body {
   margin-bottom: 12px;
   color: #bcb4c4;
   line-height: 1.6;
-}
-
-.Janus-back-text h3,
-.Hezekial-back-text h3,
-.Juliet-back-text h3 {
-  margin: 6px 0 12px;
-  color: #f0eaf5;
-  font-size: 1.3rem;
-  letter-spacing: 0.08em;
-}
-
-.Janus-back-text p,
-.Hezekial-back-text p,
-.Juliet-back-text p {
-  margin: 0 0 12px;
-  color: #bcb4c4;
-  font-size: 0.88rem;
-  line-height: 1.6;
-}
-
-.Janus-back-text::-webkit-scrollbar,
-.Hezekial-back-text::-webkit-scrollbar,
-.Juliet-back-text::-webkit-scrollbar {
-  width: 5px;
-}
-
-.Janus-back-text::-webkit-scrollbar-thumb,
-.Hezekial-back-text::-webkit-scrollbar-thumb,
-.Juliet-back-text::-webkit-scrollbar-thumb {
-  background: #4b4353;
-  border-radius: 10px;
 }
 /* =========================================================
    TAGS
