@@ -540,7 +540,7 @@ body {
 
 .expandable-text.expanded {
   max-height: 18em;
-  overflow: visible;
+  overflow-y: auto;
 }
 
 .expand-toggle {
