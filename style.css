@@ -250,39 +250,153 @@ body {
 
 
 /* =========================================================
-   ORB
+   OUROBOROS
    ========================================================= */
 
-.orb {
+.ouroboros {
+  position: relative;
+
+  width: 190px;
+  height: 190px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+/* Soft magical glow behind the serpent */
+
+.ouroboros-glow {
+  position: absolute;
+
   width: 150px;
   height: 150px;
 
   border-radius: 50%;
 
-  border: 1px solid rgba(255, 255, 255, 0.5);
+  background: rgba(170, 130, 210, 0.08);
 
   box-shadow:
-    0 0 30px rgba(180, 140, 220, 0.15),
-    inset 0 0 30px rgba(255, 255, 255, 0.08);
+    0 0 30px rgba(180, 140, 220, 0.18),
+    0 0 70px rgba(120, 90, 160, 0.08);
 
-  animation: orbPulse 5s ease-in-out infinite;
+  animation: ouroborosPulse 4s ease-in-out infinite;
 }
 
-@keyframes orbPulse {
+
+/* The snake's circular body */
+
+.ouroboros-ring {
+  position: relative;
+
+  width: 145px;
+  height: 145px;
+
+  border: 13px solid #aaa0b2;
+
+  border-radius: 50%;
+
+  box-shadow:
+    0 0 8px rgba(220, 210, 230, 0.35),
+    inset 0 0 8px rgba(0, 0, 0, 0.5);
+
+  transform: rotate(-20deg);
+
+  animation: ouroborosRotate 12s linear infinite;
+}
+
+
+/* Snake head */
+
+.snake-head {
+  position: absolute;
+
+  top: -18px;
+  left: 50%;
+
+  width: 30px;
+  height: 25px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  transform: translateX(-50%) rotate(45deg);
+
+  border-radius: 45% 45% 35% 35%;
+
+  background: #aaa0b2;
+
+  color: #15121b;
+
+  font-size: 10px;
+
+  box-shadow:
+    0 0 10px rgba(220, 210, 230, 0.3);
+}
+
+
+/* Tail */
+
+.snake-tail {
+  position: absolute;
+
+  top: -3px;
+  left: 50%;
+
+  width: 20px;
+  height: 32px;
+
+  transform:
+    translateX(-50%)
+    translateY(-5px)
+    rotate(-15deg);
+
+  background: #aaa0b2;
+
+  clip-path: polygon(
+    50% 0%,
+    100% 100%,
+    50% 80%,
+    0% 100%
+  );
+}
+
+
+/* Subtle movement */
+
+@keyframes ouroborosRotate {
+
+  from {
+    transform: rotate(-20deg);
+  }
+
+  to {
+    transform: rotate(340deg);
+  }
+
+}
+
+
+/* Glow breathing */
+
+@keyframes ouroborosPulse {
 
   0%,
   100% {
-    transform: scale(1);
-    opacity: 0.7;
+    transform: scale(0.95);
+
+    opacity: 0.6;
   }
 
   50% {
     transform: scale(1.08);
+
     opacity: 1;
   }
 
 }
-
 
 /* =========================================================
    OC GRID
