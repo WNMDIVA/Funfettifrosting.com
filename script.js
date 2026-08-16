@@ -67,25 +67,34 @@ document.addEventListener("DOMContentLoaded", () => {
   const musicBtn = document.getElementById("music-btn");
   const musicIcon = document.getElementById("music-icon");
   const musicStatus = document.getElementById("music-status");
+  const archiveEntry = document.getElementById("archive-entry");
+  const enterArchiveBtn = document.getElementById("enter-archive");
 
   if (music && musicBtn) {
-    // Volume level (0.35 = 35%)
     music.volume = 0.35;
 
     let isPlaying = false;
 
-    function toggleMusic() {
-      if (isPlaying) {
-        music.pause();
+    function setMusicState(playing) {
+      if (playing) {
+        musicIcon.textContent = "🔊";
+        musicStatus.textContent = "MUSIC: ON";
+        musicBtn.classList.add("playing");
+      } else {
         musicIcon.textContent = "🔇";
         musicStatus.textContent = "MUSIC: OFF";
         musicBtn.classList.remove("playing");
+      }
+    }
+
+    function toggleMusic() {
+      if (isPlaying) {
+        music.pause();
+        setMusicState(false);
         isPlaying = false;
       } else {
         music.play().then(() => {
-          musicIcon.textContent = "🔊";
-          musicStatus.textContent = "MUSIC: ON";
-          musicBtn.classList.add("playing");
+          setMusicState(true);
           isPlaying = true;
         }).catch(err => {
           console.log("Audio play blocked by browser:", err);
@@ -93,26 +102,28 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     }
 
-    // Toggle on button click
     musicBtn.addEventListener("click", (e) => {
       e.stopPropagation();
       toggleMusic();
     });
+  }
 
-    // Start music on user's first click anywhere on page
-    function startOnFirstInteraction() {
-      if (!isPlaying) {
+  if (archiveEntry && enterArchiveBtn) {
+    enterArchiveBtn.addEventListener("click", () => {
+      archiveEntry.classList.add("hidden");
+
+      if (music) {
         music.play().then(() => {
-          musicIcon.textContent = "🔊";
-          musicStatus.textContent = "MUSIC: ON";
-          musicBtn.classList.add("playing");
-          isPlaying = true;
-        }).catch(() => {});
+          if (musicIcon && musicStatus && musicBtn) {
+            musicIcon.textContent = "🔊";
+            musicStatus.textContent = "MUSIC: ON";
+            musicBtn.classList.add("playing");
+          }
+        }).catch(err => {
+          console.log("Entry music play blocked by browser:", err);
+        });
       }
-      document.removeEventListener("click", startOnFirstInteraction);
-    }
-
-    document.addEventListener("click", startOnFirstInteraction);
+    });
   }
 
 });
