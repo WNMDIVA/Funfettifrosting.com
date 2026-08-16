@@ -531,30 +531,48 @@ body {
 
 .Janus-info,
 .Hezekial-info,
-.Juliet-info {
+.Juliet-info,
+.Janus-back-text,
+.Hezekial-back-text,
+.Juliet-back-text {
   position: relative;
   flex: 1;
-  padding: 20px 24px;
+  padding: 18px 24px;
   overflow-y: auto;
+}
+
+.Janus-info,
+.Hezekial-info,
+.Juliet-info {
   max-height: 260px;
+  padding-top: 20px;
 }
 
 .Janus-info::-webkit-scrollbar,
 .Hezekial-info::-webkit-scrollbar,
-.Juliet-info::-webkit-scrollbar {
+.Juliet-info::-webkit-scrollbar,
+.Janus-back-text::-webkit-scrollbar,
+.Hezekial-back-text::-webkit-scrollbar,
+.Juliet-back-text::-webkit-scrollbar {
   width: 5px;
 }
 
 .Janus-info::-webkit-scrollbar-thumb,
 .Hezekial-info::-webkit-scrollbar-thumb,
-.Juliet-info::-webkit-scrollbar-thumb {
+.Juliet-info::-webkit-scrollbar-thumb,
+.Janus-back-text::-webkit-scrollbar-thumb,
+.Hezekial-back-text::-webkit-scrollbar-thumb,
+.Juliet-back-text::-webkit-scrollbar-thumb {
   background: #4b4353;
   border-radius: 10px;
 }
 
 .Janus-info h3,
 .Hezekial-info h3,
-.Juliet-info h3 {
+.Juliet-info h3,
+.Janus-back-text h3,
+.Hezekial-back-text h3,
+.Juliet-back-text h3 {
   margin: 8px 0;
   color: #f0eaf5;
   font-size: 1.3rem;
@@ -563,57 +581,21 @@ body {
 
 .Janus-info p,
 .Hezekial-info p,
-.Juliet-info p {
+.Juliet-info p,
+.Janus-back-text p,
+.Hezekial-back-text p,
+.Juliet-back-text p {
   margin: 0;
   color: #aaa1b0;
   font-size: 0.88rem;
 }
 
-.expandable-text-wrap {
-  display: block;
-  max-height: 7.8em;
-  overflow: hidden;
-  transition: max-height 0.35s ease;
-}
-
-.expandable-text-wrap.expanded {
-  max-height: 22em;
-  overflow-y: auto;
-}
-
-.expandable-text {
-  margin: 0;
-  color: #aaa1b0;
-  font-size: 0.88rem;
+.Janus-back-text p,
+.Hezekial-back-text p,
+.Juliet-back-text p {
+  margin-bottom: 12px;
+  color: #bcb4c4;
   line-height: 1.6;
-  transition: max-height 0.35s ease;
-}
-
-.expandable-text.expanded {
-  max-height: none;
-  overflow: visible;
-}
-
-.expand-toggle {
-  border: none;
-  background: transparent;
-  padding: 0;
-  color: #c9b7d8;
-  font: inherit;
-  font-size: 0.76rem;
-  letter-spacing: 0.12em;
-  text-transform: lowercase;
-  text-align: left;
-  cursor: pointer;
-}
-
-.Janus-back-text,
-.Hezekial-back-text,
-.Juliet-back-text {
-  position: relative;
-  flex: 1;
-  padding: 18px 24px;
-  overflow-y: auto;
 }
 
 .Janus-back-text h3,

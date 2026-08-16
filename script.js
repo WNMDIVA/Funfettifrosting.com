@@ -43,19 +43,6 @@ document.addEventListener("DOMContentLoaded", () => {
   // 3. TAROT CARD FLIP
   // =========================================================
 
-  document.querySelectorAll(".expand-toggle").forEach((button) => {
-    button.addEventListener("click", (event) => {
-      event.stopPropagation();
-
-      const wrapper = button.closest(".expandable-text-wrap");
-      if (!wrapper) return;
-
-      const isExpanded = wrapper.classList.toggle("expanded");
-      button.setAttribute("aria-expanded", String(isExpanded));
-      button.textContent = isExpanded ? "show less" : "...";
-    });
-  });
-
   const cards = document.querySelectorAll(".oc-card");
 
   cards.forEach(card => {
