@@ -312,20 +312,7 @@ body {
 
   animation: ouroborosRotate 18s linear infinite;
    
-   @keyframes ouroborosRotate {
-
-  from {
-    transform: rotate(0deg);
-  }
-
-  to {
-    transform: rotate(360deg);
-  }
-
-}
-}
-
-
+ 
 /* =========================================================
    SUBTLE FLOATING MOTION
    ========================================================= */
@@ -364,6 +351,19 @@ body {
   }
 
 }
+  @keyframes ouroborosRotate {
+
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+
+}
+}
+
 
 /* =========================================================
    OC GRID
