@@ -311,7 +311,7 @@ body {
     drop-shadow(0 0 25px rgba(140, 100, 190, 0.18));
 
   animation: ouroborosRotate 18s linear infinite;
-   
+}
  
 /* =========================================================
    SUBTLE FLOATING MOTION
@@ -350,6 +350,12 @@ body {
     opacity: 1;
   }
 
+   
+/* =========================================================
+   OURBOROS ROTATION WHEEEEE
+   ========================================================= */
+
+   
 }
   @keyframes ouroborosRotate {
 
