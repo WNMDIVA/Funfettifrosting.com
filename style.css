@@ -504,6 +504,15 @@ body {
   position: relative;
   flex: 1;
   padding: 20px 24px;
+.Janus-info,
+.Hezekial-info,
+.Juliet-info {
+  position: relative;
+  flex: 1;
+  padding: 20px 24px;
+  overflow: hidden;
+  max-height: 260px;
+}
 }
 
 .Janus-info h3,
