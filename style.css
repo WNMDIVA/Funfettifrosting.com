@@ -250,144 +250,111 @@ body {
 
 
 /* =========================================================
-   OUROBOROS
+   OUROBOROS HERO EMBLEM
    ========================================================= */
 
-.ouroboros {
+.ouroboros-container {
   position: relative;
 
-  width: 190px;
-  height: 190px;
+  width: 250px;
+  height: 250px;
 
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
 }
 
 
-/* Soft magical glow behind the serpent */
+/* =========================================================
+   GLOW BEHIND THE SNAKE
+   ========================================================= */
 
 .ouroboros-glow {
   position: absolute;
 
-  width: 150px;
-  height: 150px;
+  width: 210px;
+  height: 210px;
 
   border-radius: 50%;
 
-  background: rgba(170, 130, 210, 0.08);
+  background: rgba(150, 120, 190, 0.08);
 
   box-shadow:
-    0 0 30px rgba(180, 140, 220, 0.18),
-    0 0 70px rgba(120, 90, 160, 0.08);
+    0 0 30px rgba(180, 150, 220, 0.18),
+    0 0 70px rgba(120, 90, 170, 0.12),
+    0 0 120px rgba(100, 80, 150, 0.06);
 
-  animation: ouroborosPulse 4s ease-in-out infinite;
+  animation: ouroborosGlow 4s ease-in-out infinite;
+
+  z-index: 1;
 }
 
 
-/* The snake's circular body */
+/* =========================================================
+   THE ACTUAL OUROBOROS IMAGE
+   ========================================================= */
 
-.ouroboros-ring {
+.ouroboros-image {
   position: relative;
 
-  width: 145px;
-  height: 145px;
+  z-index: 2;
 
-  border: 13px solid #aaa0b2;
+  width: 235px;
+  height: 235px;
 
-  border-radius: 50%;
+  object-fit: contain;
 
-  box-shadow:
-    0 0 8px rgba(220, 210, 230, 0.35),
-    inset 0 0 8px rgba(0, 0, 0, 0.5);
+  display: block;
 
-  transform: rotate(-20deg);
+  filter:
+    drop-shadow(0 0 8px rgba(210, 190, 240, 0.35))
+    drop-shadow(0 0 25px rgba(140, 100, 190, 0.18));
 
-  animation: ouroborosRotate 12s linear infinite;
-}
-
-
-/* Snake head */
-
-.snake-head {
-  position: absolute;
-
-  top: -18px;
-  left: 50%;
-
-  width: 30px;
-  height: 25px;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  transform: translateX(-50%) rotate(45deg);
-
-  border-radius: 45% 45% 35% 35%;
-
-  background: #aaa0b2;
-
-  color: #15121b;
-
-  font-size: 10px;
-
-  box-shadow:
-    0 0 10px rgba(220, 210, 230, 0.3);
-}
-
-
-/* Tail */
-
-.snake-tail {
-  position: absolute;
-
-  top: -3px;
-  left: 50%;
-
-  width: 20px;
-  height: 32px;
-
-  transform:
-    translateX(-50%)
-    translateY(-5px)
-    rotate(-15deg);
-
-  background: #aaa0b2;
-
-  clip-path: polygon(
-    50% 0%,
-    100% 100%,
-    50% 80%,
-    0% 100%
-  );
-}
-
-
-/* Subtle movement */
-
-@keyframes ouroborosRotate {
+  animation: ouroborosRotate 18s linear infinite;
+   
+   @keyframes ouroborosRotate {
 
   from {
-    transform: rotate(-20deg);
+    transform: rotate(0deg);
   }
 
   to {
-    transform: rotate(340deg);
+    transform: rotate(360deg);
+  }
+
+}
+}
+
+
+/* =========================================================
+   SUBTLE FLOATING MOTION
+   ========================================================= */
+
+@keyframes ouroborosFloat {
+
+  0%,
+  100% {
+    transform: translateY(0) scale(1);
+  }
+
+  50% {
+    transform: translateY(-5px) scale(1.025);
   }
 
 }
 
 
-/* Glow breathing */
+/* =========================================================
+   GLOW PULSING
+   ========================================================= */
 
-@keyframes ouroborosPulse {
+@keyframes ouroborosGlow {
 
   0%,
   100% {
-    transform: scale(0.95);
+    transform: scale(0.92);
 
-    opacity: 0.6;
+    opacity: 0.55;
   }
 
   50% {
