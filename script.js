@@ -169,6 +169,38 @@ document.addEventListener("DOMContentLoaded", () => {
   const musicStatus = document.getElementById("music-status");
   const archiveEntry = document.getElementById("archive-entry");
   const enterArchiveBtn = document.getElementById("enter-archive");
+  const snake = document.querySelector(".ouroboros-container");
+  const heartbeatSound = new Audio("audio/heartbeat.wav");
+
+  function triggerHeartbeat() {
+    if (!snake) return;
+
+    snake.classList.remove("beat");
+    void snake.offsetWidth;
+    snake.classList.add("beat");
+
+    heartbeatSound.currentTime = 0;
+    heartbeatSound.play().catch(() => {
+      // Browsers may block autoplay until the user interacts.
+    });
+
+    setTimeout(() => {
+      snake.classList.remove("beat");
+    }, 1000);
+  }
+
+  if (snake) {
+    snake.addEventListener("pointerdown", (event) => {
+      event.preventDefault();
+      triggerHeartbeat();
+    });
+    snake.addEventListener("keydown", (event) => {
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        triggerHeartbeat();
+      }
+    });
+  }
 
   if (music && musicBtn) {
     music.volume = 0.35;
