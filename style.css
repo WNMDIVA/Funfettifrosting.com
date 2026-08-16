@@ -399,6 +399,7 @@ body {
   perspective: 1200px;
   cursor: pointer;
   outline: none;
+  touch-action: pan-y;
 }
 
 .oc-card-inner {

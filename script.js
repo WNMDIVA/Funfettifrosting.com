@@ -46,7 +46,30 @@ document.addEventListener("DOMContentLoaded", () => {
   const cards = document.querySelectorAll(".oc-card");
 
   cards.forEach(card => {
+    let touchStartY = 0;
+    let touchStartX = 0;
+
+    card.addEventListener("touchstart", (e) => {
+      const touch = e.touches[0];
+      touchStartY = touch.clientY;
+      touchStartX = touch.clientX;
+    }, { passive: true });
+
+    card.addEventListener("touchend", (e) => {
+      const touch = e.changedTouches[0];
+      const deltaY = Math.abs(touch.clientY - touchStartY);
+      const deltaX = Math.abs(touch.clientX - touchStartX);
+
+      if (deltaY < 10 && deltaX < 10) {
+        card.classList.toggle("flipped");
+      }
+    }, { passive: true });
+
     card.addEventListener("click", (e) => {
+      if (e.target.closest(".Janus-info, .Hezekial-info, .Juliet-info, .Janus-back-text, .Hezekial-back-text, .Juliet-back-text")) {
+        return;
+      }
+
       e.stopPropagation();
       card.classList.toggle("flipped");
     });
