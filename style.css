@@ -163,6 +163,37 @@ body {
   padding: 120px 0;
 }
 
+.notes-section {
+  padding-top: 60px;
+  padding-bottom: 40px;
+}
+
+.notes-panel {
+  padding: 24px 28px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(18, 14, 24, 0.8);
+  border-radius: 12px;
+}
+
+.notes-label {
+  margin: 0 0 16px;
+  color: #cbb7d8;
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.notes-list {
+  margin: 0;
+  padding-left: 1.5rem;
+  color: #f0eaf5;
+  line-height: 1.9;
+}
+
+.notes-list li + li {
+  margin-top: 8px;
+}
+
 .section-heading {
   margin-bottom: 50px;
 }
