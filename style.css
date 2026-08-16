@@ -498,12 +498,6 @@ body {
    CARD TEXT & SCROLLBAR
    ========================================================= */
 
-o,
-.Hezekial-info,
-.Juliet-info {
-  position: relative;
-  flex: 1;
-  padding: 20px 24px;
 .Janus-info,
 .Hezekial-info,
 .Juliet-info {
@@ -512,7 +506,9 @@ o,
   padding: 20px 24px;
   overflow-y: auto;
   max-height: 260px;
-   .Janus-info::-webkit-scrollbar,
+}
+
+.Janus-info::-webkit-scrollbar,
 .Hezekial-info::-webkit-scrollbar,
 .Juliet-info::-webkit-scrollbar {
   width: 5px;
@@ -523,8 +519,6 @@ o,
 .Juliet-info::-webkit-scrollbar-thumb {
   background: #4b4353;
   border-radius: 10px;
-}
-}
 }
 
 .Janus-info h3,
@@ -562,7 +556,6 @@ o,
 .expandable-text.expanded {
   max-height: none;
   overflow: visible;
-}
 }
 
 .expand-toggle {
@@ -617,7 +610,6 @@ o,
   background: #4b4353;
   border-radius: 10px;
 }
-
 /* =========================================================
    TAGS
    ========================================================= */
