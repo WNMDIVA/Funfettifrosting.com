@@ -43,6 +43,83 @@ document.addEventListener("DOMContentLoaded", () => {
   // 3. TAROT CARD FLIP
   // =========================================================
 
+  const cardData = [
+    {
+      cssClass: "Janus",
+      name: "Janus Picca",
+      frontTag: "THE MAGICIAN",
+      frontTitle: "JANUS PICA",
+      frontText: "His parents didn't call him Heinous Janus for no reason! Janus is one rambunctiously playful man, prone to playing silly pranks and sneaking around. But don't be fooled, he isn't simple-minded. In fact, he's rather intelligent, a fact that's he's hidden by his lively facade. He knows how to use his charisma, and isn't shy about it. He always wants to know… everything. And his eye? What could he be hiding? He really is a mystery of a man. A shame he turned out so callous.",
+      backTag: "THE MAGICIAN REVERSED",
+      backTitle: "THE BLEEDING BROKER",
+      backText: ["replace", "replace"],
+      frontImage: "images/Janus-front.png",
+      backImage: "images/Janus-back.png"
+    },
+    {
+      cssClass: "Hezekial",
+      name: "Hezekial Adams",
+      frontTag: "THE HIEROPHANT",
+      frontTitle: "HEZEKIAL ADAMS",
+      frontText: "His early life was constrained by self imposed structured schedules and a dilligent education. He despised laziness and detested obstreperous people, focused solely on achieving his unattainable standard of perfection. A brilliant mind made for engineering and tinkering, he might've succeeded the best of the best. Still, despite his seemingly prejudiced exterior, he wouldn't hesitate to help anyone in their time of need—it's just a shame it didn't last.",
+      backTag: "THE HIEROPHANT REVERSED",
+      backTitle: "THE PROPHETIC JUDGE",
+      backText: ["Replace this text", "Replace"],
+      frontImage: "images/Hezekial-front.png",
+      backImage: "images/Hezekial-back.png"
+    },
+    {
+      cssClass: "Juliet",
+      name: "Juliet Dreymos",
+      frontTag: "THE EMPRESS",
+      frontTitle: "JULIET DREYMOS",
+      frontText: "This doe halfling is as sweet as a dried jujube! Standing at only 135 cm tall at her full height, she's as intimidating as a fluffy lapdog. A childhood being a frequent victim of teasing has made Juliet a bit skittish and timid, so she is quick to get dependant on those she lets into her tender heart. A daddy's girl through and through, she relishes in the privileges of Lord Dreymos's coddling. Destined to power through favouritism, it's safe to assume she'd make a kind marchioness. It was a shame her vulnerability consumed her.",
+      backTag: "THE EMPRESS REVERSED",
+      backTitle: "EKLEKTOS PRINKIPESSA",
+      backText: ["Replace", "Perhaps the archive knows more than it is willing to reveal."],
+      frontImage: "images/Juliet-front.png",
+      backImage: "images/Juliet-back.png"
+    }
+  ];
+
+  const grid = document.getElementById("oc-grid");
+
+  if (grid) {
+    grid.innerHTML = cardData.map((card) => `
+      <article class="oc-card" tabindex="0" role="button" aria-label="Card for ${card.name}">
+        <div class="oc-card-inner">
+          <div class="oc-card-front">
+            <div class="${card.cssClass}-image">
+              <img src="${card.frontImage}" alt="${card.name}">
+            </div>
+            <div class="${card.cssClass}-info">
+              <span class="tag">${card.frontTag}</span>
+              <h3>${card.frontTitle}</h3>
+              <div class="expandable-text-wrap">
+                <p class="expandable-text collapsed">${card.frontText}</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="oc-card-back">
+            <div class="${card.cssClass}-image">
+              <img src="${card.backImage}" alt="${card.name} alternate artwork">
+            </div>
+            <div class="${card.cssClass}-back-text">
+              <span class="tag">${card.backTag}</span>
+              <h3>${card.backTitle}</h3>
+              ${card.backText.map((line) => `
+                <div class="expandable-text-wrap">
+                  <p class="expandable-text collapsed">${line}</p>
+                </div>
+              `).join("")}
+            </div>
+          </div>
+        </div>
+      </article>
+    `).join("");
+  }
+
   const cards = document.querySelectorAll(".oc-card");
 
   cards.forEach(card => {
