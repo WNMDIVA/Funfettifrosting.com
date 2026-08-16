@@ -1,4 +1,3 @@
-
 /* =========================================================
    RESET
    ========================================================= */
@@ -19,7 +18,6 @@ body {
   line-height: 1.6;
 }
 
-
 /* =========================================================
    HEADER
    ========================================================= */
@@ -28,23 +26,18 @@ body {
   position: sticky;
   top: 0;
   z-index: 100;
-
   display: flex;
   justify-content: space-between;
   align-items: center;
-
   padding: 18px 5%;
-
   background: rgba(9, 8, 13, 0.92);
   backdrop-filter: blur(12px);
-
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .logo {
   color: #eeeaf2;
   text-decoration: none;
-
   font-size: 0.8rem;
   font-weight: bold;
   letter-spacing: 0.12em;
@@ -58,17 +51,14 @@ body {
 .nav a {
   color: #aaa3b5;
   text-decoration: none;
-
   font-size: 0.85rem;
   letter-spacing: 0.08em;
-
   transition: color 0.2s ease;
 }
 
 .nav a:hover {
   color: #ffffff;
 }
-
 
 /* =========================================================
    GENERAL
@@ -86,9 +76,7 @@ body {
 
 .eyebrow {
   margin: 0 0 10px;
-
   color: #a998b9;
-
   font-size: 0.7rem;
   letter-spacing: 0.22em;
   text-transform: uppercase;
@@ -96,7 +84,6 @@ body {
 
 .section-heading h2 {
   margin: 0;
-
   font-size: clamp(2rem, 5vw, 3.5rem);
   line-height: 1.1;
 }
@@ -105,7 +92,6 @@ body {
   color: #9991a4;
 }
 
-
 /* =========================================================
    HERO
    ========================================================= */
@@ -113,38 +99,27 @@ body {
 .hero {
   width: min(1200px, 90%);
   min-height: 90vh;
-
   margin: 0 auto;
-
   display: grid;
   grid-template-columns: 1.2fr 0.8fr;
-
   align-items: center;
-
   gap: 70px;
-
   padding: 80px 0;
 }
 
 .hero-content h1 {
   margin: 0;
-
   font-size: clamp(4rem, 10vw, 9rem);
-
   line-height: 0.85;
   letter-spacing: -0.05em;
 }
 
 .hero-text {
   max-width: 600px;
-
   margin: 30px 0;
-
   color: #aaa3b5;
-
   font-size: 1.05rem;
 }
-
 
 /* =========================================================
    BUTTON
@@ -152,19 +127,13 @@ body {
 
 .button {
   display: inline-block;
-
   padding: 12px 20px;
-
   border: 1px solid rgba(255, 255, 255, 0.3);
-
   color: #eeeaf2;
-
   text-decoration: none;
-
   font-size: 0.8rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-
   transition:
     background 0.25s ease,
     color 0.25s ease,
@@ -174,10 +143,8 @@ body {
 .button:hover {
   background: #eeeaf2;
   color: #09080d;
-
   transform: translateY(-2px);
 }
-
 
 /* =========================================================
    HERO CARD
@@ -185,69 +152,49 @@ body {
 
 .prophetic-judge {
   position: relative;
-
   min-height: 480px;
-
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
   text-align: center;
-
   padding: 40px;
-
   border: 1px solid rgba(255, 255, 255, 0.15);
-
-  background:
-    radial-gradient(
-      circle at center,
-      rgba(150, 110, 180, 0.15),
-      transparent 55%
-    );
+  background: radial-gradient(
+    circle at center,
+    rgba(150, 110, 180, 0.15),
+    transparent 55%
+  );
 }
 
 .prophetic-judge::before {
   content: "";
-
   position: absolute;
-
   inset: 12px;
-
   border: 1px solid rgba(255, 255, 255, 0.08);
-
   pointer-events: none;
 }
 
 .prophetic-judge p {
   margin: 20px 0 5px;
-
   color: #aaa3b5;
-
   font-size: 0.7rem;
   letter-spacing: 0.2em;
 }
 
 .prophetic-judge h2 {
   margin: 0;
-
   font-size: 2.5rem;
-
   line-height: 1;
-
   letter-spacing: 0.08em;
 }
 
 .prophetic-judge span {
   margin-top: 20px;
-
   color: #777080;
-
   font-size: 0.65rem;
-
   letter-spacing: 0.2em;
 }
-
 
 /* =========================================================
    OUROBOROS HERO EMBLEM
@@ -255,98 +202,56 @@ body {
 
 .ouroboros-container {
   position: relative;
-
   width: 250px;
   height: 250px;
-
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-
-/* =========================================================
-   GLOW BEHIND THE SNAKE
-   ========================================================= */
-
 .ouroboros-glow {
   position: absolute;
-
   width: 210px;
   height: 210px;
-
   border-radius: 50%;
-
   background: rgba(150, 120, 190, 0.08);
-
   box-shadow:
     0 0 30px rgba(180, 150, 220, 0.18),
     0 0 70px rgba(120, 90, 170, 0.12),
     0 0 120px rgba(100, 80, 150, 0.06);
-
   animation: ouroborosGlow 4s ease-in-out infinite;
-
-  z-index: 1;
 }
-
-/* =========================================================
-   THE ACTUAL OUROBOROS IMAGE
-   ========================================================= */
 
 .ouroboros-image {
   position: relative;
-
-  z-index: 2;
-
   width: 235px;
   height: 235px;
-
   object-fit: contain;
-
   display: block;
-
   filter:
     drop-shadow(0 0 8px rgba(210, 190, 240, 0.35))
     drop-shadow(0 0 25px rgba(140, 100, 190, 0.18));
-
   animation: ouroborosRotate 18s linear infinite;
 }
 
-
-/* =========================================================
-   GLOW PULSING
-   ========================================================= */
-
 @keyframes ouroborosGlow {
-
-  0%,
-  100% {
+  0%, 100% {
     transform: scale(0.92);
     opacity: 0.55;
   }
-
   50% {
     transform: scale(1.08);
     opacity: 1;
   }
-
 }
 
-
-/* =========================================================
-   OUROBOROS ROTATION WHEEEEE
-   ========================================================= */
-
 @keyframes ouroborosRotate {
-
   from {
     transform: rotate(0deg);
   }
-
   to {
     transform: rotate(360deg);
   }
-
 }
 
 /* =========================================================
@@ -355,177 +260,101 @@ body {
 
 .oc-grid {
   display: grid;
-
   grid-template-columns: repeat(3, minmax(0, 1fr));
-
   gap: 30px;
 }
 
-
 /* =========================================================
-   TAROT CARD
+   TAROT CARD (3D ENGINE SETUP)
    ========================================================= */
 
 .oc-card {
   position: relative;
-
   width: 100%;
   height: 650px;
-
-  perspective: 1400px;
-
+  perspective: 1200px;
   cursor: pointer;
+  outline: none;
 }
-
-
-/* =========================================================
-   THE THING THAT FLIPS
-   ========================================================= */
 
 .oc-card-inner {
   position: relative;
-
   width: 100%;
   height: 100%;
-
   transform-style: preserve-3d;
-
-  transition: transform 0.9s cubic-bezier(0.2, 0.7, 0.2, 1);
+  transition: transform 0.8s cubic-bezier(0.4, 0.2, 0.2, 1);
 }
-
-
-/* =========================================================
-   CLICKED STATE
-   ========================================================= */
 
 .oc-card.flipped .oc-card-inner {
   transform: rotateY(180deg);
 }
 
-
-/* =========================================================
-   FRONT AND BACK
-   IMPORTANT:
-   THESE MUST OVERLAP
-   ========================================================= */
-
+/* Common Card Faces */
 .oc-card-front,
 .oc-card-back {
   position: absolute;
-
   top: 0;
   left: 0;
-
   width: 100%;
   height: 100%;
-
-  overflow: hidden;
-
   border-radius: 12px;
-
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45);
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
-
-  border: 1px solid rgba(255, 255, 255, 0.2);
-
-  box-shadow:
-    0 20px 50px rgba(0, 0, 0, 0.45);
-}
-
-
-/* =========================================================
-   FRONT
-   ========================================================= */
-
-.oc-card-front {
-  z-index: 2;
-
   display: flex;
   flex-direction: column;
+}
 
+/* Front Face */
+.oc-card-front {
   background:
     linear-gradient(
       145deg,
       rgba(255, 255, 255, 0.06),
       rgba(30, 20, 40, 0.8)
-    );
-
-  background-color: #15121b;
+    ),
+    #15121b;
+  transform: rotateY(0deg);
 }
 
-
-/* =========================================================
-   BACK
-   ========================================================= */
-
+/* Back Face */
 .oc-card-back {
-  z-index: 1;
-
-  display: flex;
-  flex-direction: column;
-
   background:
     linear-gradient(
       145deg,
       rgba(255, 255, 255, 0.05),
       rgba(30, 20, 40, 0.9)
-    );
-
-  background-color: #111016;
-
+    ),
+    #111016;
   transform: rotateY(180deg);
 }
 
-
-/* =========================================================
-   DECORATIVE TAROT BORDER
-   ========================================================= */
-
+/* Tarot Borders & Icons */
 .oc-card-front::before,
 .oc-card-back::before {
   content: "";
-
   position: absolute;
-
-  top: 10px;
-  left: 10px;
-  right: 10px;
-  bottom: 10px;
-
+  inset: 10px;
   border: 1px solid rgba(200, 180, 220, 0.18);
-
   border-radius: 8px;
-
   pointer-events: none;
-
-  z-index: 20;
+  z-index: 10;
 }
-
-
-/* =========================================================
-   DECORATIVE SYMBOL
-   ========================================================= */
 
 .oc-card-front::after,
 .oc-card-back::after {
   content: "✦";
-
   position: absolute;
-
   top: 18px;
   left: 20px;
-
-  z-index: 21;
-
   color: #c9b7d8;
-
   font-size: 16px;
-
   opacity: 0.7;
-
   pointer-events: none;
+  z-index: 11;
 }
-
 
 /* =========================================================
    IMAGES
@@ -535,14 +364,10 @@ body {
 .Hezekial-image,
 .Juliet-image {
   position: relative;
-
   flex-shrink: 0;
-
   width: 100%;
-  height: 68%;
-
+  height: 60%;
   overflow: hidden;
-
   background: #111;
 }
 
@@ -550,17 +375,11 @@ body {
 .Hezekial-image img,
 .Juliet-image img {
   display: block;
-
   width: 100%;
   height: 100%;
-
   object-fit: cover;
-
   transition: transform 0.7s ease;
 }
-
-
-/* Hover image */
 
 .oc-card:hover .Janus-image img,
 .oc-card:hover .Hezekial-image img,
@@ -568,60 +387,38 @@ body {
   transform: scale(1.04);
 }
 
-
-/* =========================================================
-   IMAGE BOTTOM FADE
-   ========================================================= */
-
+/* Image Bottom Fade */
 .Janus-image::after,
 .Hezekial-image::after,
 .Juliet-image::after {
   content: "";
-
   position: absolute;
-
   left: 0;
   right: 0;
   bottom: 0;
-
   height: 40%;
-
-  background:
-    linear-gradient(
-      to bottom,
-      transparent,
-      rgba(10, 8, 14, 0.85)
-    );
-
+  background: linear-gradient(to bottom, transparent, rgba(10, 8, 14, 0.85));
   pointer-events: none;
 }
 
-
 /* =========================================================
-   FRONT TEXT
+   CARD TEXT & SCROLLBAR
    ========================================================= */
 
 .Janus-info,
 .Hezekial-info,
 .Juliet-info {
   position: relative;
-
-  z-index: 5;
-
   flex: 1;
-
-  padding: 22px 26px;
+  padding: 20px 24px;
 }
 
 .Janus-info h3,
 .Hezekial-info h3,
 .Juliet-info h3 {
-  margin: 8px 0 8px;
-
+  margin: 8px 0;
   color: #f0eaf5;
-
-  font-size: 1.35rem;
-
+  font-size: 1.3rem;
   letter-spacing: 0.08em;
 }
 
@@ -629,155 +426,36 @@ body {
 .Hezekial-info p,
 .Juliet-info p {
   margin: 0;
-
   color: #aaa1b0;
-
-  font-size: 0.9rem;
+  font-size: 0.88rem;
 }
-
-
-/* =========================================================
-   BACK TEXT
-   ========================================================= */
 
 .Janus-back-text,
 .Hezekial-back-text,
 .Juliet-back-text {
   position: relative;
-
-  z-index: 5;
-
   flex: 1;
-
-  padding: 20px 26px 25px;
-
+  padding: 18px 24px;
   overflow-y: auto;
 }
 
 .Janus-back-text h3,
 .Hezekial-back-text h3,
 .Juliet-back-text h3 {
-  margin: 8px 0 15px;
-
+  margin: 6px 0 12px;
   color: #f0eaf5;
-
-  font-size: 1.35rem;
-
+  font-size: 1.3rem;
   letter-spacing: 0.08em;
 }
 
 .Janus-back-text p,
 .Hezekial-back-text p,
 .Juliet-back-text p {
-  margin: 0 0 15px;
-
+  margin: 0 0 12px;
   color: #bcb4c4;
-
-  font-size: 0.9rem;
-
-  line-height: 1.7;
+  font-size: 0.88rem;
+  line-height: 1.6;
 }
-
-
-/* =========================================================
-   TAGS
-   ========================================================= */
-
-.tag {
-  display: inline-block;
-
-  color: #b99bd0;
-
-  font-size: 0.7rem;
-
-  letter-spacing: 0.16em;
-
-  text-transform: uppercase;
-}
-
-
-/* =========================================================
-   ABOUT
-   ========================================================= */
-
-.about-box {
-  display: grid;
-
-  grid-template-columns: 1.4fr 0.6fr;
-
-  gap: 60px;
-
-  padding: 45px;
-
-  border: 1px solid rgba(255, 255, 255, 0.12);
-
-  background: rgba(255, 255, 255, 0.025);
-}
-
-.about-box h3 {
-  margin-top: 0;
-
-  font-size: 1.8rem;
-}
-
-.about-box p {
-  max-width: 650px;
-
-  color: #aaa1b0;
-}
-
-
-/* =========================================================
-   FACTS
-   ========================================================= */
-
-.facts {
-  display: flex;
-
-  flex-direction: column;
-
-  justify-content: center;
-
-  gap: 20px;
-}
-
-.facts div {
-  padding-bottom: 12px;
-
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-
-  color: #aaa1b0;
-}
-
-.facts span {
-  margin-right: 12px;
-
-  color: #706879;
-
-  font-size: 0.75rem;
-}
-
-
-/* =========================================================
-   FOOTER
-   ========================================================= */
-
-footer {
-  padding: 40px 5%;
-
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-
-  text-align: center;
-
-  color: #66616c;
-
-  font-size: 0.75rem;
-}
-
-
-/* =========================================================
-   SCROLLBAR
-   ========================================================= */
 
 .Janus-back-text::-webkit-scrollbar,
 .Hezekial-back-text::-webkit-scrollbar,
@@ -785,27 +463,93 @@ footer {
   width: 5px;
 }
 
-.Janus-back-text::-webkit-scrollbar-track,
-.Hezekial-back-text::-webkit-scrollbar-track,
-.Juliet-back-text::-webkit-scrollbar-track {
-  background: transparent;
-}
-
 .Janus-back-text::-webkit-scrollbar-thumb,
 .Hezekial-back-text::-webkit-scrollbar-thumb,
 .Juliet-back-text::-webkit-scrollbar-thumb {
   background: #4b4353;
-
   border-radius: 10px;
 }
 
-
 /* =========================================================
-   RESPONSIVE
+   TAGS
    ========================================================= */
 
-@media (max-width: 1000px) {
+.tag {
+  display: inline-block;
+  color: #b99bd0;
+  font-size: 0.7rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
 
+/* =========================================================
+   ABOUT
+   ========================================================= */
+
+.about-box {
+  display: grid;
+  grid-template-columns: 1.4fr 0.6fr;
+  gap: 60px;
+  padding: 45px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.025);
+}
+
+.about-box h3 {
+  margin-top: 0;
+  font-size: 1.8rem;
+}
+
+.about-box p {
+  max-width: 650px;
+  color: #aaa1b0;
+}
+
+/* =========================================================
+   FACTS
+   ========================================================= */
+
+.facts {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 20px;
+}
+
+.facts div {
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  color: #aaa1b0;
+}
+
+.facts span {
+  margin-right: 12px;
+  color: #706879;
+  font-size: 0.75rem;
+}
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
+footer {
+  padding: 40px 5%;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  text-align: center;
+  color: #66616c;
+  font-size: 0.75rem;
+}
+
+/* =========================================================
+   ACCESSIBILITY & RESPONSIVE
+   ========================================================= */
+
+.oc-card:focus-visible {
+  outline: 2px solid #d4c1e1;
+  outline-offset: 5px;
+}
+
+@media (max-width: 1000px) {
   .hero {
     grid-template-columns: 1fr;
   }
@@ -817,12 +561,9 @@ footer {
   .about-box {
     grid-template-columns: 1fr;
   }
-
 }
 
-
 @media (max-width: 650px) {
-
   .site-header {
     padding: 15px 5%;
   }
@@ -841,9 +582,7 @@ footer {
 
   .hero {
     width: 90%;
-
     min-height: auto;
-
     padding: 80px 0;
   }
 
@@ -866,16 +605,4 @@ footer {
   .about-box {
     padding: 25px;
   }
-
-}
-
-
-/* =========================================================
-   ACCESSIBILITY
-   ========================================================= */
-
-.oc-card:focus-visible {
-  outline: 2px solid #d4c1e1;
-
-  outline-offset: 5px;
 }
