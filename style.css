@@ -540,14 +540,14 @@ body {
 
 .expandable-text-wrap {
   display: block;
-  max-height: 4.8em;
+  max-height: 7.8em;
   overflow: hidden;
   transition: max-height 0.35s ease;
 }
 
 .expandable-text-wrap.expanded {
-  max-height: 18em;
-  overflow-y: scroll;
+  max-height: 22em;
+  overflow-y: auto;
 }
 
 .expandable-text {

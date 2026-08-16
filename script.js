@@ -46,7 +46,10 @@ document.addEventListener("DOMContentLoaded", () => {
   document.querySelectorAll(".expand-toggle").forEach((button) => {
     button.addEventListener("click", (event) => {
       event.stopPropagation();
-      const wrapper = button.previousElementSibling;
+
+      const wrapper = button.closest(".expandable-text-wrap");
+      if (!wrapper) return;
+
       const isExpanded = wrapper.classList.toggle("expanded");
       button.setAttribute("aria-expanded", String(isExpanded));
       button.textContent = isExpanded ? "show less" : "...";
