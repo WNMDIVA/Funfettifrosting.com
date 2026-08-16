@@ -17,20 +17,7 @@ Just Pures OCS
 5. Select your main branch and the `/ (root)` folder.
 6. Save. GitHub will give you a `github.io` website address.
 
-## Adding character art
 
-Replace a placeholder like:
-
-```html
-<div class="oc-image placeholder">CHARACTER 01</div>
-```
-
-with:
-
-```html
-<img class="oc-image" src="images/character1.png" alt="Character Name">
-```
-
-Then add your image to an `images` folder in the repository.
+Add your image to an `images` folder in the repository.
 
 You can also change the colors at the top of `style.css` using the variables in `:root`.
