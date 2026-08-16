@@ -1,6 +1,6 @@
 # OC Archive
 
-A simple personal website for showcasing original characters.
+Just Pures OCS 
 
 ## Files
 
