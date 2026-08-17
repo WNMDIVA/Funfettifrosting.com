@@ -6,6 +6,16 @@
   box-sizing: border-box;
 }
 
+/* `clip` rather than `hidden`: hidden on the body would make the BODY the
+   scrolling box (its overflow-y computes to auto), which moves the vertical
+   scrollbar off the viewport, takes it out of reach of scroll-behavior below,
+   and puts a non-visible overflow between the sticky header and its scrollport.
+   clip stops sideways scrolling without creating a scroll container at all. */
+html,
+body {
+  overflow-x: clip;
+}
+
 html {
   scroll-behavior: smooth;
 }
@@ -35,7 +45,6 @@ body {
   color: var(--text);
   font-family: Georgia, "Times New Roman", serif;
   line-height: 1.6;
-  overflow-x: hidden;
   position: relative;
   color-scheme: dark;
 }
@@ -1002,15 +1011,22 @@ footer {
 
 @media (max-width: 650px) {
   .site-header {
+    flex-wrap: wrap;
+    gap: 10px 12px;
     padding: 15px 5%;
   }
 
   .logo {
+    max-width: 100%;
     font-size: 0.65rem;
+    line-height: 1.4;
   }
 
   .nav {
-    gap: 12px;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 10px 12px;
+    width: 100%;
   }
 
   .nav a {
@@ -1023,8 +1039,27 @@ footer {
     padding: 80px 0;
   }
 
+  .hero-content {
+    min-width: 0;
+  }
+
   .hero-content h1 {
-    font-size: 4rem;
+    font-size: clamp(2.8rem, 16vw, 4.5rem);
+    line-height: 0.9;
+    letter-spacing: -0.06em;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
+
+  .section-heading h2,
+  .notes-section h2 {
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
+
+  .notes-list {
+    overflow-wrap: anywhere;
+    word-break: break-word;
   }
 
   .section {
