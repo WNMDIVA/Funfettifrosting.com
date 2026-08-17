@@ -1141,29 +1141,6 @@ footer {
 }
 
 /* =========================================================
-   REDUCED MOTION
-   ========================================================= */
-
-@media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
-  }
-
-  .oc-card-inner,
-  .char-flip-inner {
-    transition: none;
-  }
-
-  .oc-image img,
-  .ouroboros-image,
-  .ouroboros-glow,
-  .ouroboros-container {
-    animation: none;
-    transition: none;
-  }
-}
-
-/* =========================================================
    FLOATING MUSIC PLAYER
    ========================================================= */
 
