@@ -62,7 +62,7 @@ document.addEventListener("DOMContentLoaded", () => {
             <div class="oc-info">
               <span class="tag">${card.frontTag}</span>
               <h3>${card.frontTitle}</h3>
-              <p class="oc-blurb">${card.frontText}</p>
+              <p class="oc-blurb" tabindex="0">${card.frontText}</p>
               <a class="button oc-open" href="${card.id}.html">OPEN FILE →</a>
             </div>
           </div>
@@ -74,7 +74,7 @@ document.addEventListener("DOMContentLoaded", () => {
             <div class="oc-info oc-info-back">
               <span class="tag">${card.backTag}</span>
               <h3>${card.backTitle}</h3>
-              <p class="oc-blurb">${card.backText.join(" ")}</p>
+              <p class="oc-blurb" tabindex="0">${card.backText.join(" ")}</p>
               <a class="button oc-open" href="${card.id}.html">OPEN FILE →</a>
             </div>
           </div>
@@ -122,6 +122,13 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     card.addEventListener("keydown", (e) => {
+      // The blurb is a focusable scroll box, so arrows/space/page keys belong
+      // to it while it has focus. Flipping out from under someone mid-read
+      // would also swap the text they were reading.
+      if (e.target.closest(".oc-blurb")) {
+        return;
+      }
+
       if (e.key === "Enter" || e.key === " ") {
         e.preventDefault();
         toggleFlip();

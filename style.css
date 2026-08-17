@@ -94,12 +94,20 @@ body::before {
   }
 }
 
+/* The gate is a fixed overlay, so it does NOT inherit the page's scrolling —
+   if the panel is taller than the phone (small screen, landscape, big text)
+   the Enter button ends up off-screen and unreachable. So the gate scrolls
+   itself, and the panel is centred with `margin: auto` rather than
+   `place-items: center`: centred grid/flex items that overflow have an
+   unreachable top edge, auto margins stay fully scrollable. */
 .archive-entry {
   position: fixed;
   inset: 0;
   z-index: 2000;
-  display: grid;
-  place-items: center;
+  display: flex;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: 24px 16px;
   background: radial-gradient(circle at center, rgba(95, 17, 22, 0.88), rgba(12, 6, 9, 0.98));
   transition: opacity 0.8s ease, visibility 0.8s ease;
 }
@@ -116,6 +124,8 @@ body::before {
 }
 
 .entry-panel {
+  margin: auto;
+  max-width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -645,10 +655,15 @@ body::before {
 /* =========================================================
    CARD TEXT
 
-   Deliberately NOT scrollable. The blurb is clamped to a few
-   lines and fades out; the full text lives on the character
-   page. A scroll container in here would sit inside the 3D
-   flip, which touch browsers handle badly.
+   The blurb IS scrollable, on both faces — the text runs about
+   twice the height of the pane, and it should be readable on the
+   card without opening the character page.
+
+   The catch: this scroll container sits inside the 3D flip, so
+   two things have to be handled. Vertical drags must not chain
+   into the page once the text ends (overscroll-behavior), and a
+   drag must not register as a flip-tap — that part is already
+   covered by the 10px movement threshold in script.js.
    ========================================================= */
 
 .oc-info {
@@ -674,14 +689,43 @@ body::before {
   font-size: 0.88rem;
 
   /* Take whatever space is left after the tag, title and button, and
-     fade out the overflow. Using flex rather than -webkit-line-clamp
+     scroll inside it. Using flex rather than -webkit-line-clamp
      means a title that wraps to two lines steals height from the text
      instead of pushing the button out of the pane. */
   flex: 1 1 auto;
   min-height: 0;
-  overflow: hidden;
-  -webkit-mask-image: linear-gradient(to bottom, #000 72%, transparent 100%);
-  mask-image: linear-gradient(to bottom, #000 72%, transparent 100%);
+  overflow-y: auto;
+
+  /* Don't hand a flick at the end of the text to the page behind. */
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+
+  /* Room for the scrollbar so it never sits on top of a word. */
+  padding-right: 10px;
+
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 122, 122, 0.55) rgba(255, 255, 255, 0.07);
+}
+
+/* WebKit/Blink track styling. iOS Safari ignores these and keeps its own
+   transient overlay indicator, so the scrollbar is a hint on Android and
+   desktop but not on iPhone — the text still scrolls there either way. */
+.oc-blurb::-webkit-scrollbar {
+  width: 6px;
+}
+
+.oc-blurb::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.07);
+  border-radius: 3px;
+}
+
+.oc-blurb::-webkit-scrollbar-thumb {
+  background: rgba(255, 122, 122, 0.55);
+  border-radius: 3px;
+}
+
+.oc-blurb::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 160, 160, 0.85);
 }
 
 .oc-info-back .oc-blurb {
@@ -1010,6 +1054,15 @@ footer {
 }
 
 @media (max-width: 650px) {
+  .entry-panel {
+    gap: 18px;
+    padding: 34px 22px;
+  }
+
+  .entry-panel h1 {
+    overflow-wrap: anywhere;
+  }
+
   .site-header {
     flex-wrap: wrap;
     gap: 10px 12px;
