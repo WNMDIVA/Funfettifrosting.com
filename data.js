@@ -30,35 +30,35 @@ window.CHARACTERS = [
         sideLabel: "Younger",
         voice: "audio/janus-voice.mp3",
         stats: [
-          { label: "Age", value: "REPLACE" },
-          { label: "Height", value: "REPLACE" },
-          { label: "Species", value: "REPLACE" },
-          { label: "Pronouns", value: "REPLACE" },
-          { label: "Role", value: "REPLACE" },
+          { label: "Age", value: "21" },
+          { label: "Height", value: "6'4 | 193 cm" },
+          { label: "Species", value: "?" },
+          { label: "Pronouns", value: "He/Him | They/Them" },
+          { label: "Role", value: "Hawthorne Student" },
           { label: "Arcana", value: "The Magician" }
         ],
         bio: [
           "REPLACE — biography paragraph one. Where he came from, who raised him, what he wanted.",
           "REPLACE — biography paragraph two. The turn: what cracked, and when."
         ],
-        traits: ["REPLACE", "REPLACE", "REPLACE"]
+        traits: ["Playful", "Perceptive", "Powerful"]
       },
 
       older: {
         sideLabel: "Older",
         voice: "audio/janus-older-voice.mp3",
         stats: [
-          { label: "Age", value: "REPLACE" },
-          { label: "Height", value: "REPLACE" },
-          { label: "Species", value: "REPLACE" },
-          { label: "Pronouns", value: "REPLACE" },
-          { label: "Role", value: "REPLACE" },
+          { label: "Age", value: "27" },
+          { label: "Height", value: "6'4 | 193 cm" },
+          { label: "Species", value: "???" },
+          { label: "Pronouns", value: "He/Him | They/Them" },
+          { label: "Role", value: "Mercenary Information Broker" },
           { label: "Arcana", value: "The Magician Reversed" }
         ],
         bio: [
           "REPLACE — what he became, and what it cost."
         ],
-        traits: ["REPLACE", "REPLACE", "REPLACE"]
+        traits: ["Pernicious", "Prickly", "Puzzling"]
       }
     }
   },
@@ -83,35 +83,35 @@ window.CHARACTERS = [
         sideLabel: "Younger",
         voice: "audio/hezekial-voice.mp3",
         stats: [
-          { label: "Age", value: "REPLACE" },
-          { label: "Height", value: "REPLACE" },
-          { label: "Species", value: "REPLACE" },
-          { label: "Pronouns", value: "REPLACE" },
-          { label: "Role", value: "REPLACE" },
+          { label: "Age", value: "20" },
+          { label: "Height", value: "6'6 | 198 cm" },
+          { label: "Species", value: "Human" },
+          { label: "Pronouns", value: "He/Him" },
+          { label: "Role", value: "Ironspire Captain" },
           { label: "Arcana", value: "The Hierophant" }
         ],
         bio: [
           "REPLACE — biography paragraph one. The Adams household, the standard he was held to.",
           "REPLACE — biography paragraph two. The turn: where the sympathy went."
         ],
-        traits: ["REPLACE", "REPLACE", "REPLACE"]
+        traits: ["Dilligent", "Dutiful", "Decent"]
       },
 
       older: {
         sideLabel: "Older",
         voice: "audio/hezekial-older-voice.mp3",
         stats: [
-          { label: "Age", value: "REPLACE" },
-          { label: "Height", value: "REPLACE" },
-          { label: "Species", value: "REPLACE" },
-          { label: "Pronouns", value: "REPLACE" },
-          { label: "Role", value: "REPLACE" },
+          { label: "Age", value: "26" },
+          { label: "Height", value: "6'8 | 207 cm" },
+          { label: "Species", value: "Human" },
+          { label: "Pronouns", value: "He/Him" },
+          { label: "Role", value: "Holy Judge" },
           { label: "Arcana", value: "The Hierophant Reversed" }
         ],
         bio: [
           "REPLACE — what he became, and what it cost."
         ],
-        traits: ["REPLACE", "REPLACE", "REPLACE"]
+        traits: ["Defective", "Deceitful", "Detached"]
       }
     }
   },
@@ -136,35 +136,35 @@ window.CHARACTERS = [
         sideLabel: "Younger",
         voice: "audio/juliet-voice.mp3",
         stats: [
-          { label: "Age", value: "REPLACE" },
-          { label: "Height", value: "135 cm" },
+          { label: "Age", value: "18" },
+          { label: "Height", value: "4'5 135 cm" },
           { label: "Species", value: "Halfling" },
-          { label: "Pronouns", value: "REPLACE" },
-          { label: "Role", value: "REPLACE" },
+          { label: "Pronouns", value: "She/Her" },
+          { label: "Role", value: "Aurelion Student" },
           { label: "Arcana", value: "The Empress" }
         ],
         bio: [
           "REPLACE — biography paragraph one. The Dreymos estate, the coddling, the teasing.",
           "REPLACE — biography paragraph two. The turn: what the vulnerability opened the door to."
         ],
-        traits: ["REPLACE", "REPLACE", "REPLACE"]
+        traits: ["Shy", "Shaky", "Sensitive"]
       },
 
       older: {
         sideLabel: "Older",
         voice: "audio/juliet-older-voice.mp3",
         stats: [
-          { label: "Age", value: "REPLACE" },
-          { label: "Height", value: "REPLACE" },
+          { label: "Age", value: "24" },
+          { label: "Height", value: "4'5 | 135 cm" },
           { label: "Species", value: "Halfling" },
-          { label: "Pronouns", value: "REPLACE" },
-          { label: "Role", value: "REPLACE" },
+          { label: "Pronouns", value: "She/Her" },
+          { label: "Role", value: "Marchioness Dreymos" },
           { label: "Arcana", value: "The Empress Reversed" }
         ],
         bio: [
           "REPLACE — what she became, and what it cost."
         ],
-        traits: ["REPLACE", "REPLACE", "REPLACE"]
+        traits: ["Scornful", "Sanctimonious", "Self-conscious"]
       }
     }
   }
