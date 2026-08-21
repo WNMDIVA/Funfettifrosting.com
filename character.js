@@ -69,6 +69,18 @@ document.addEventListener("DOMContentLoaded", () => {
     `;
   }
 
+  // Only rendered for sides that actually define quotes (the older selves).
+  function renderQuotes(quotes) {
+    if (!quotes || !quotes.length) return "";
+
+    return `
+      <h2>Quotes</h2>
+      <ul class="quote-list">
+        ${quotes.map((line) => `<li>${escapeHtml(line)}</li>`).join("")}
+      </ul>
+    `;
+  }
+
   function renderBio(paragraphs) {
     if (!paragraphs || !paragraphs.length) return "";
     return paragraphs.map((p) => `<p>${escapeHtml(p)}</p>`).join("");
@@ -113,6 +125,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
           <h2>Traits</h2>
           ${renderList(side.traits)}
+
+          ${renderQuotes(side.quotes)}
         </div>
       </article>
     `;
